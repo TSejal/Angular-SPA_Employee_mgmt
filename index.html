@@ -1,0 +1,51 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-data-table/0.7.0/dataTable.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+    <script src="./js/dirPagination.js"></script>
+    <script src="./js/script.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">Employee Management System</a>
+                </div>
+
+                <ul class="nav navbar-nav navbar-right">     
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-home"></i> Home</a>
+                    </li>
+                    <li>
+                        <a href="#employees">
+                            <i class="fa fa-shield"></i> Employee </a>
+                    </li>
+                    <li>
+                        <a href="#about">
+                            <i class="fa fa-sign-out"></i> Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div id="main">
+        <div ng-view></div>
+
+    </div>
+</body>
+
+</html>

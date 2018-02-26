@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+
+
+
+    <title>Employee Management System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-data-table/0.7.0/dataTable.css" />
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-data-table/0.7.0/dataTable.js"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+   
+    <script src="./js/script.js"></script>
+    
+</head>
+
+<body>
+
+<div>
+ 
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal" style="margin-left: 61em">
+        Add Employee
+      </button>
+      
+      
+
+
+<center>
+
+    <div class="panel panel-info" style="width:50%">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Employee List</div>
+        <div class="panel-body">
+
+
+            <div class="col-md-12">
+                <input type="text" style="width:20%" ng-model="search" class="form-control input-sm" placeholder="Type your search keyword..">
+                <br>
+            </div>
+            <table ui-jq="dataTable" ui-options="dataTableOpt" ng-model="showlist" class="table">
+
+                <tr>
+                    <th ng-click="sort('id')">#
+                        <span class="glyphicon sort-icon" ng-show="sortKey=='id'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                    </th>
+                    <th ng-click="sort('name')">Name
+                        <span class="glyphicon sort-icon" ng-show="sortKey=='name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                    </th>
+                    <th ng-click="sort('age')">Age
+                        <span class="glyphicon sort-icon" ng-show="sortKey=='age'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                    </th>
+                    <th ng-click="sort('department')">Department
+                        <span class="glyphicon sort-icon" ng-show="sortKey=='department'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                    </th>
+                    <th ng-click="sort('currentEmp')">is CUrrent?
+                        <span class="glyphicon sort-icon" ng-show="sortKey=='currentEmp'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                    </th>
+                    <th>Action</th>
+                </tr>
+                <tr dir-paginate="emp in employee|orderBy:sortKey:reverse|filter:search|itemsPerPage:3">
+                    <td>{{emp.id}}</td>
+                    <td>{{emp.name }}</td>
+                    <td>{{emp.age}}</td>
+                    <td>{{emp.department}}</td>
+                    <td>{{emp.currentEmp}}</td>
+                    <td colspan="2">
+                        <button ng-click="deleteEmployee(emp)" class="glyphicon glyphicon-trash"> </button>
+                        <button ng-click="editEmployee(emp)" class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editModal"> </button>
+                    </td>
+                </tr>
+            </table>
+            <dir-pagination-controls max-size="3" direction-links="true" boundary-links="true">
+            </dir-pagination-controls>
+        </div>
+
+    </div>
+
+
+    </center>
+
+
+
+
+
+
+
+    <div class="modal fade" id="addModal" tabindex="0" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+           <div class="modal-content">
+              <div class="modal-body">
+                  <div class="panel panel-info">
+                      <div class="panel-heading">Add Employee
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      </div>
+
+                      <center>
+                          <div class="panel-body">
+                              <form name="add">
+                                  <table style="width:50%" class="table table-bordered">
+                                      <tr>
+                                          <td> Name</td>
+                                          <td>
+                                              <input type="text" ng-model="employeess.name" placeholder="Your Name" ng-required="true" class="form-control input-sm" />
+                                          </td>
+                                     </tr>
+
+                                      <tr>
+                                         <td>Age</td>
+                                         <td>
+                                             <input type="number" ng-model="employeess.age" placeholder="Your Age" ng-required="true" class="form-control input-sm">
+                                         </td>
+                                     </tr>
+                                      <tr>
+                                         <td>Department</td>
+                                         <td>
+                                             <select ng-model="employeess.department" class="form-control input-sm">
+                                                <option selected="selected">Software</option>
+                                                <option>Embedded</option>
+                                                <option>HR</option>
+                                             </select>
+                                         </td>
+                                      </tr>
+                                      <tr>
+                                         <td>Are You Working </td>
+                                         <td>
+                                            <input type="checkbox" ng-model="employeess.currentEmp" ng-true-value="'YES'" ng-false-value="'NO'">
+                                         </td>
+                                     </tr>
+                                     <tr>
+                                        <td colspan="2">
+                                           <center>
+                                              <button ng-hide="hideadd" ng-click="addEmployee()" class="btn" data-dismiss="modal" aria-hidden="true" ng-disabled="add.$invalid">Add</button>
+                                              <button ng-show="showedit" ng-click="updateEmp()" class="btn">Update</button>
+                                           </center>
+                                        </td>
+                                     </tr>
+                               </table>
+                            </form>
+                         </div>
+                     </center>
+                  </div>
+               </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+
+
+
+                        <!-- edit Modal -->
+
+                        <div class="modal fade, modal" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <div class="panel panel-info">
+                                            <div class="panel-heading">Edit Employee
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            </div>
+
+                                            <center>
+                                                <div class="panel-body">
+                                                    <form name="edit">
+                                                        <table style="width:50%" class="table table-bordered">
+                                                            <tr>
+                                                                <td> Name</td>
+
+                                                                <td>
+                                                                    <input type="text" ng-model="emps.name" placeholder="Your Name" ng-required="true" class="form-control input-sm" />
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>Age</td>
+
+                                                                <td>
+                                                                    <input type="number" ng-model="emps.age" placeholder="Your Age" ng-required="true" class="form-control input-sm">
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Department</td>
+
+                                                                <td>
+                                                                    <select ng-model="emps.department" class="form-control input-sm">
+                                                                        <option selected="selected">Software</option>
+                                                                        <option>Embedded</option>
+                                                                        <option>HR</option>
+                                                                    </select>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Are You Working </td>
+
+                                                                <td>
+                                                                    <input type="checkbox" ng-model="emps.currentEmp" ng-true-value="'YES'" ng-false-value="'NO'">
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2">
+                                                                    <center>
+                                                                        <!--<button ng-hide="hideadd" ng-click="addEmp()" class="btn" >Add</button>-->
+                                                                        <button ng-click="editEmployee(emps)" class="btn" data-dismiss="modal" aria-hidden="true">Update</button>
+                                                                    </center>
+                                                                </td>
+
+                                                            </tr>
+
+                                                        </table>
+                                                    </form>
+                                                </div>
+                                            </center>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->
+
+
+
+
+</div>
+
+</body>
+</html>

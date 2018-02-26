@@ -1,0 +1,109 @@
+{
+  "employees": [
+    {
+      "id": 3,
+      "name": "Seju",
+      "age": 21,
+      "department": "HR",
+      "currentEmp": "YES"
+    },
+    {
+      "id": 4,
+      "name": "sejal",
+      "age": 21,
+      "department": "Embedded",
+      "currentEmp": "YES"
+    },
+    {
+      "id": 6,
+      "name": "Priya",
+      "age": 10,
+      "department": "HR",
+      "currentEmp": "YES"
+    },
+    {
+      "id": 7,
+      "name": "Rut",
+      "age": 9,
+      "department": "Software",
+      "currentEmp": "YES"
+    },
+    {
+      "id": 8,
+      "name": "Sej",
+      "age": 22,
+      "department": "Embedded",
+      "currentEmp": "YES"
+    },
+    {
+      "id": 9,
+      "name": "ss",
+      "age": 23,
+      "department": "Embedded",
+      "currentEmp": "YES"
+    },
+    {
+      "id": 10,
+      "name": "qwq",
+      "age": -2,
+      "department": "Software",
+      "currentEmp": "YES"
+    },
+    {
+      "id": 11,
+      "name": "asakl",
+      "age": -3,
+      "department": "Software",
+      "currentEmp": "YES"
+    },
+    {
+      "id": 12,
+      "name": "Ronak",
+      "age": 90,
+      "department": "HR",
+      "currentEmp": "YES"
+    },
+    {
+      "id": 13,
+      "name": "Umang",
+      "age": 90,
+      "department": "HR",
+      "currentEmp": "YES"
+    },
+    {
+      "id": 16,
+      "name": "Seju",
+      "age": 11,
+      "department": "Software",
+      "currentEmp": "'YES'"
+    },
+    {
+      "id": 17,
+      "name": "Sejal",
+      "age": 21,
+      "department": "Software",
+      "currentEmp": "YES"
+    },
+    {
+      "id": 18,
+      "name": "jignesh",
+      "age": 25,
+      "department": "Embedded",
+      "currentEmp": "YES"
+    },
+    {
+      "id": 19,
+      "name": "Tanuj",
+      "age": 27,
+      "department": "HR",
+      "currentEmp": "YES"
+    },
+    {
+      "id": 20,
+      "name": "ullas shukla",
+      "age": 30,
+      "department": "Embedded",
+      "currentEmp": "NO"
+    }
+  ]
+}
